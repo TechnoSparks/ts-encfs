@@ -1,0 +1,7 @@
+id=ts-encfs
+name=ts-encfs
+version=v1-alpha
+versionCode=1
+author=TechnoSparks
+description=ts-encfs automates the process of mounting an encrypted EncFS folder
+minMagisk=17000
