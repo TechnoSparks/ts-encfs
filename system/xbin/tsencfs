@@ -51,6 +51,16 @@ if [ ! "$1" ]; then
 elif [ "$1" = "help" ] || [ "$1" = "h" ] || [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
     printhelp
 
+# Mount --------------------------------------------------
+elif [ "$1" = "mount" ]; then
+
+
+# Action unrecognised ------------------------------------
+else
+    echo "E: Unknown action \"$1\" supplied"
+    echo 'Run "tsbinds h" or "tsbinds help" for help'
+fi
+
 # Handover default PATH ----------------------------------
 # in case somebody sourced this fakebin
 PATH=$oPATH
