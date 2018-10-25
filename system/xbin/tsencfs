@@ -1,0 +1,60 @@
+#!/system/bin/sh
+# sy
+
+# All hail busybox for standardising this script!
+busybox=/sbin/.core/busybox
+oPATH=$PATH
+PATH=$busybox:$oPATH
+set -o pipefail
+
+# Check if run under root --------------------------------
+if ! ls /data > /dev/null 2> /dev/null; then
+    echo "[!] ERROR"
+    echo "    ts-binds needs to be invoked"
+    echo "    from an elevated shell."
+    echo "    Please run 'su' first."
+    echo
+    echo "Terminating.."
+    exit 1
+fi
+
+# Functions ----------------------------------------------
+MODDIR=/sbin/.core/img/ts-encfs
+datadir=/data/ts-encfs
+int=/mnt/runtime/default/emulated/0
+intraw=/data/media/0
+sdname=$(grep -m 1 "/mnt/media_rw/" /proc/mounts | grep -m 1 -Eo "[0-9A-Z]{4}-[0-9A-Z]{4}")
+sd=/mnt/runtime/default/$sdname
+folderlist=$datadir/cached-folderlist.sh
+folderlistuser=$intraw/ts-encfs-folderlist.txt
+
+supass() {
+    /sbin/su -M -c "$@"
+}
+
+printhelp() {
+    echo "tsencfs [options] [arg]"
+    echo
+    echo "Available options:"
+    echo
+    echo "help ............... Show this reference text"
+    echo "h | --help | -h .... Ditto"
+}
+
+# No action given ----------------------------------------
+if [ ! "$1" ]; then
+    echo "E: No action is declared!"
+    echo ''
+    printhelp
+
+# Print Help ---------------------------------------------
+elif [ "$1" = "help" ] || [ "$1" = "h" ] || [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+    printhelp
+
+# Handover default PATH ----------------------------------
+# in case somebody sourced this fakebin
+PATH=$oPATH
+set +o pipefail
+
+# Return true if script reaches here ---------------------
+exit 0
