@@ -43,24 +43,9 @@ printhelp() {
     echo "-x   [pair name]"
     echo "      Mounts the pair as configured"
     echo "      in the folderlist"
-    echo "-xo  [enc] [dec]"
-    echo "      Mounts the defined encrypted"
-    echo "      directory to another path. [enc] is encrypted"
-    echo "      directory while [dec] is the path to mount to"
-    echo "-xx  [pair name] [arg]...[argN]"
-    echo "      Same as -x but extraneous arguments are passed"
-    echo "      to encfs which would again passed to FUSE"
-    echo "-xox [enc] [dec] [arg]...[argN]"
-    echo "      Same as -xo but extraneous arguments are passed"
-    echo "      to encfs which would again passed to FUSE"
     echo "-u   [pair name]"
     echo "      Unmounts the pair as configured"
     echo "      in the folderlist"
-    echo "-uo  [dec]"
-    echo "      Unmounts the defined path"
-    echo
-    echo "Warning: tsencfs is just a script."
-    echo "It cannot parse multiple \"switches\" at once"
 }
 
 # No action given ----------------------------------------
