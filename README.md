@@ -10,7 +10,7 @@ ts-encfs automates the process of mounting an encrypted EncFS directory on boot
   - Android version ≥ 8
   - Android version = 7 **if** SDCardFS is enabled by user
 - EncFS Magisk Module
-  - Or your own-built binaries into `/system/xbin`
+  - Or your own-built binaries in `/system/xbin`
 - Magisk Stable version ≥17
   - Beta and Canary version not supported
 
